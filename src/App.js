@@ -1,15 +1,37 @@
-import { Fragment } from "react";
-import IterationComponent from "./component/IterationComponent";
-
+import { Fragment, useState } from "react";
+import HookEffect from "./hook/HookEffect";
+import HookRef from "./hook/hookRef";
+import HookQ from "./hook/HookQ";
+import HookReducer from "./hook/HookReducer";
 
 function App() {
 
-  return(
-    
+  //보이기 숨기기 - unmount값 확인
+  const [visible, setVisible] = useState(true);
+
+  const handleVisible = () => {
+    setVisible(!visible);
+  }
+
+  return(    
     <Fragment>
+   
+      <button onClick={handleVisible}>{visible ? '숨기기': '보이기'}</button>
+      {visible ? <HookEffect/> : null}
+
+      <hr/>
+
+      <HookRef />
+
+      <hr/>
+
+      <HookQ />
       
-      <IterationComponent />
-      
+      <hr/>
+
+      <HookReducer />
+
+
     </Fragment>
 
   )
